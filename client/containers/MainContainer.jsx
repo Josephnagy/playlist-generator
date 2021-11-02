@@ -20,7 +20,6 @@ class MainContainer extends Component {
         return (
             <div className="container">
                 <h1> Playlist Generator</h1>
-                
             </div>
         );
     }
