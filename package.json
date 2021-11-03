@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node server/server.js",
         "build": "NODE_ENV=production webpack",
-        "dev": "concurrently \"webpack serve --open\" \"node server/server.js\""
+        "dev": "NODE_ENV=development concurrently \"webpack serve --open\" \"node server/server.js\""
     },
     "nodemonConfig": {
         "ignore": [
