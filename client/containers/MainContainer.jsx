@@ -14,7 +14,7 @@ import React, { Component } from 'react';
 import Login from '../components/Login.jsx';
 import UserInfo from '../components/UserInfo.jsx';
 // Utility functions 
-import Utility from '../utility.js'; 
+import Utility from '../utility/utility.js'; 
 
 
 // import from child components...
