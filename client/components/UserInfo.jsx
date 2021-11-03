@@ -1,19 +1,18 @@
 /**
  * ************************************
  *
- * @module  App.jsx
+ * @module  UserInfo.jsx
  * @author Joe Nagy
  * @date 11/2/2021
- * @description App
+ * @description Displays basic spotify user info 
  *
  * ************************************
  */
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import MainContainer from './containers/MainContainer.jsx';
 
-class App extends Component {
+class UserInfo extends Component {
     constructor(props) {
         super(props);
     }
@@ -21,11 +20,13 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1> Playlist Generator</h1>
-                <MainContainer />
+                <div id="login">
+                    <h1>Congrats you logged in! Here's your user info</h1>
+                    <a href="">Logout</a>
+                </div>
             </div>
         );
     }
 }
 
-export default App;
+export default UserInfo;
