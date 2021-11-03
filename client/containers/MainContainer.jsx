@@ -44,14 +44,28 @@ class MainContainer extends Component {
         let { accessToken, refreshToken} = Utility.getTokens();
 
         // get user data 
-        Utility.getUser(accessToken);
-
-        // save tokens to state 
-        this.setState({
-            ...this.state, 
-            accessToken: [accessToken],
-            refreshToken: [refreshToken] 
+        let auth = "Bearer " + accessToken;
+        
+        // fetch request 
+        // update state inside fetch request
+        fetch('https://api.spotify.com/v1/me', {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": auth
+            }
         })
+            .then(response => response.json())
+            .then(user => {
+                this.setState({
+                    ...this.state,
+                    user: user,
+                    accessToken: accessToken,
+                    refreshToken: refreshToken
+                });
+            })
+            .catch(err => console.log(err)); 
+        
 
         return;
     }
