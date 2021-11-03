@@ -13,6 +13,7 @@ import React, { Component } from 'react';
 // Components 
 import Login from '../components/Login.jsx';
 import UserInfo from '../components/UserInfo.jsx';
+import PlaylistGenerator from '../components/PlaylistGenerator.jsx';
 // Utility functions 
 import Utility from '../utility/utility.js'; 
 
@@ -80,11 +81,12 @@ class MainContainer extends Component {
     render() {
         console.log('page just re-rendered'); 
         const loggedIn = (this.state.accessToken !== null) ? true: false;
-        let display = <Login> </Login>;
+        let display = <Login/>;
+        
         //  conditionally render login page based on user state
         // if user is logged in, display the webpage 
         // -> otherwise, display login page 
-        if (loggedIn) display = <UserInfo> </UserInfo>;
+        if (loggedIn) display = <div><UserInfo /> <PlaylistGenerator /></div>;
 
         return (
             <div className="container">

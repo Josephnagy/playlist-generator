@@ -10,6 +10,7 @@
  */
 
 import React, { Component } from 'react';
+import seeds from '../data/SampleSeeds.js';
 
 
 // import from child components...
@@ -33,8 +34,11 @@ class PlaylistGenerator extends Component {
     }
 
     render() {
+        console.log('SEEDS:'); 
+        console.log(seeds); 
         return (
             <div className="playlist-generator">
+                <h1> Here's the playlist generator</h1>
             </div>
         );
     }
