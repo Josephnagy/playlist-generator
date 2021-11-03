@@ -43,15 +43,15 @@ class MainContainer extends Component {
         // get tokens 
         let { accessToken, refreshToken} = Utility.getTokens();
 
+        // get user data 
+        Utility.getUser(accessToken);
+
         // save tokens to state 
         this.setState({
             ...this.state, 
             accessToken: [accessToken],
             refreshToken: [refreshToken] 
         })
-;
-        // if accessToken = -1, 
-
 
         return;
     }

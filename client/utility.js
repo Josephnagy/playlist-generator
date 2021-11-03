@@ -40,5 +40,23 @@ utils.getTokens = () => {
     return tokens; 
 }
 
+utils.getUser = (accessToken) => {
+    let auth = "Bearer " + accessToken; 
+    // fetch request 
+
+    fetch('https://api.spotify.com/v1/me', {
+        method: "GET",
+        headers: { 
+            "Content-type": "application/json",
+            "Authorization": auth
+         }
+    })
+        .then(response => response.json())
+        .then(userData => console.log(userData))
+        .catch (err => console.log(err));
+
+
+}
+
 // EXPORT THE UTILITY HERE
 module.exports = utils;
