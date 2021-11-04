@@ -21,7 +21,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1> Playlist Generator</h1>
+                <h1> Playlist Garden</h1> 
+                <img src="https://i.imgur.com/sONK6Yr.png"/>
                 <MainContainer />
             </div>
         );
