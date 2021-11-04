@@ -12,6 +12,8 @@
 import React, { Component } from 'react';
 import Track from '../components/Track.jsx'
 import { render } from 'react-dom';
+// MUI components 
+import List from '@mui/material/List';
 
 class PlaylistContainer extends Component {
     constructor(props) {
@@ -29,10 +31,10 @@ class PlaylistContainer extends Component {
 
         return (
             <div>
-                <div id="playlist-container">
-                    <h1>Here's your playlist</h1>
+                <h1>Here's your playlist</h1>
+                <List id="playlist-container">
                     {tracks}
-                </div>
+                </List>
             </div>
         );
     }

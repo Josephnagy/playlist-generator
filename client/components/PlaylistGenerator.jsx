@@ -134,12 +134,18 @@ class PlaylistGenerator extends Component {
                 </FormControl>
             </Box>
 
+        // declare conditonal rendering components
         let playlist;
+        let addToPlaylistsButton; 
         
         // if we have recs, pass them to compnent and display them 
-        if (this.props.recs && this.props.recs.tracks.length > 0) {
+        console.log('got this far1');
+        if (this.props.recs && this.props.recs.tracks && this.props.recs.tracks.length > 0) {
             playlist = <PlaylistContainer recs={this.props.recs}/>;
+            addToPlaylistsButton = <Button onClick={this.props.addToPlaylists}>Add to my Playlists</Button>;
         }
+        console.log('got this far2');
+
         return (
             <div className="playlist-generator">
                 <h1> I want a playlist with a</h1>
@@ -153,6 +159,7 @@ class PlaylistGenerator extends Component {
                     variant="contained"
                     onClick={this.props.generatePlaylist}
                 >Generate Playlist</Button>
+                {addToPlaylistsButton}
                 {playlist}
             </div>
         );

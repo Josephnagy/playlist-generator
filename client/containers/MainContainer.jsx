@@ -39,6 +39,7 @@ class MainContainer extends Component {
         this.changeArtistSeed = this.changeArtistSeed.bind(this); 
         this.changeGenreSeed = this.changeGenreSeed.bind(this);
         this.generatePlaylist = this.generatePlaylist.bind(this);
+        this.addToPlaylists = this.addToPlaylists.bind(this);
     }
 
     //  Functions to update state when new seeds are selected 
@@ -63,9 +64,57 @@ class MainContainer extends Component {
         });
     }
 
+    // add current recomendation playlist to user's playlists
+    addToPlaylists(){
+        // setup request url 
+        let userID = this.state.user.id; 
+        let url = `https://api.spotify.com/v1/users/${userID}/playlists`;
+
+        // prepare playlist name 
+        let playlistName = 'Playlist Garden generated playlist'; 
+
+        // prepare playlist description 
+        let playlistDescription = 'from Playlist Garden'
+
+        // prepare post request body 
+        let playlistPostBody = {
+            name: playlistName, 
+            public: true, 
+            collaborative: false, 
+            description: playlistDescription
+        }; 
+
+        playlistPostBody = JSON.stringify(playlistPostBody);
+
+        // prepare token for header
+        let auth = "Bearer " + this.state.accessToken;
+        // first make the post request
+        // update state inside fetch request
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": auth
+            }, 
+            body: playlistPostBody
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+
+        // 
+
+    }
+
+
+    // use seeds to generate a playlist recomendation 
     generatePlaylist() {
         console.log('GENERATING PLAYLIST');
         // check that at leats one of the seeds was used 
+        if(this.state.genreSeed === '' && this.state.artistSeed === '' && this.state.trackSeed === ''){
+            window.alert('Please select at least one seed!'); 
+            return;
+        }
 
         // build request url 
         let url = 'https://api.spotify.com/v1/recommendations?'; 
@@ -73,8 +122,6 @@ class MainContainer extends Component {
         url += `seed_tracks=${this.state.trackSeed}&`;
         url += `seed_artists=${this.state.artistSeed}&`;
         url += `seed_genres=${this.state.genreSeed}`;
-        console.log('request URL: ');
-        console.log(url); 
 
         // fetch request 
 
@@ -132,8 +179,6 @@ class MainContainer extends Component {
                 });
             })
             .catch(err => console.log(err)); 
-        
-
         return;
     }
 
@@ -160,6 +205,8 @@ class MainContainer extends Component {
                 changeArtistSeed={this.changeArtistSeed}
                 changeGenreSeed={this.changeGenreSeed}
                 generatePlaylist={this.generatePlaylist}
+                addToPlaylists={this.addToPlaylists}
+                recs={this.state.recs}
             />
         </div>;
 
