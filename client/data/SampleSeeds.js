@@ -60,7 +60,7 @@ const tracks = [
     {
         trackID: '25yQPHgC35WNnnOUqFhgVR',
         trackName: 'Lucy In The Sky With Diamonds',
-        artist: 'Neil Diamond'
+        artist: 'The Beatles'
     },
     {
         trackID: '2YpeDb67231RjR0MgVLzsG',
