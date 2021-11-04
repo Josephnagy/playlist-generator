@@ -26,7 +26,7 @@ class UserInfo extends Component {
                     <h1>Congrats you logged in! Here's your user info</h1>
                     <Button
                         variant="contained"
-                        href=""
+                        href="http://localhost:8080"
                     >Log Out</Button>
                 </div>
             </div>
