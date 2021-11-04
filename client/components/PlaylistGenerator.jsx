@@ -137,8 +137,9 @@ class PlaylistGenerator extends Component {
         let playlist;
         
         // if we have recs, pass them to compnent and display them 
-        if (this.props.recs && this.props.recs.tracks.length > 0) playlist = <PlaylistContainer/>;
-
+        if (this.props.recs && this.props.recs.tracks.length > 0) {
+            playlist = <PlaylistContainer recs={this.props.recs}/>;
+        }
         return (
             <div className="playlist-generator">
                 <h1> I want a playlist with a</h1>
