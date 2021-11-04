@@ -54,12 +54,12 @@ const artists = [
 const tracks = [
     {
         trackID: '2BcMwX1MPV6ZHP4tUT9uq6',
-        trackName: 'Knife Talk (with 21 Savage ft. Project Pat)',
-        artist: 'Drake'
+        trackName: 'POWER',
+        artist: 'Kanye West'
     },
     {
-        trackID: '6RfgcwsOUlWkGNAd6zjjYd',
-        trackName: 'Sweet Caroline',
+        trackID: '25yQPHgC35WNnnOUqFhgVR',
+        trackName: 'Lucy In The Sky With Diamonds',
         artist: 'Neil Diamond'
     },
     {
