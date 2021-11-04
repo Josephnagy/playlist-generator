@@ -27,7 +27,7 @@ class UserInfo extends Component {
                     <Button
                         variant="contained"
                         href=""
-                    >Log in with Spotify</Button>
+                    >Log Out</Button>
                 </div>
             </div>
         );

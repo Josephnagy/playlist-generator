@@ -141,7 +141,10 @@ class PlaylistGenerator extends Component {
         // if we have recs, pass them to compnent and display them 
         if (this.props.recs && this.props.recs.tracks && this.props.recs.tracks.length > 0) {
             playlist = <PlaylistContainer recs={this.props.recs}/>;
-            addToPlaylistsButton = <Button onClick={this.props.addToPlaylists}>Add to my Playlists</Button>;
+            addToPlaylistsButton = <Button 
+                onClick={this.props.addToPlaylists}
+                variant="outlined"
+            >Add to my Playlists</Button>;
         }
 
         return (
