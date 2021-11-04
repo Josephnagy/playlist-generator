@@ -98,7 +98,7 @@ class PlaylistGenerator extends Component {
 
         // create entire box for artistSeed
         let artistSeedBox =
-            <Box sx={{ minWidth: 120, maxWidth: 500 }}>
+            <Box sx={{ minWidth: 120, maxWidth: 500}}>
                 <FormControl fullWidth>
                     <InputLabel>Select an Artist</InputLabel>
                     <Select

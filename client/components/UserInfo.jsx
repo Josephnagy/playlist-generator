@@ -13,6 +13,10 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 // MUI Components 
 import Button from '@mui/material/Button';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 
 class UserInfo extends Component {
     constructor(props) {
@@ -20,10 +24,19 @@ class UserInfo extends Component {
     }
 
     render() {
+        let greeting = `Welcome, ${this.props.user.display_name}!`;
         return (
             <div>
                 <div id="login">
-                    <h1>Congrats you logged in! Here's your user info</h1>
+
+                    <ListItem>
+                        <ListItemAvatar>
+                            <Avatar id="user-img" src={this.props.user.images[0].url}/>
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary={greeting}
+                        />
+                    </ListItem>
                     <Button
                         variant="contained"
                         href="http://localhost:8080"
