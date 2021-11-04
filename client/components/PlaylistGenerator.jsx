@@ -10,6 +10,7 @@
  */
 
 import React, { Component } from 'react';
+import PlaylistContainer from '../containers/PlaylistContainer.jsx';
 // Dummy seed data 
 import seeds from '../data/SampleSeeds.js';
 // MUI Components 
@@ -133,7 +134,10 @@ class PlaylistGenerator extends Component {
                 </FormControl>
             </Box>
 
-
+        let playlist;
+        
+        // if we have recs, pass them to compnent and display them 
+        if (this.props.recs && this.props.recs.tracks.length > 0) playlist = <PlaylistContainer/>;
 
         return (
             <div className="playlist-generator">
@@ -148,6 +152,7 @@ class PlaylistGenerator extends Component {
                     variant="contained"
                     onClick={this.props.generatePlaylist}
                 >Generate Playlist</Button>
+                {playlist}
             </div>
         );
     }
