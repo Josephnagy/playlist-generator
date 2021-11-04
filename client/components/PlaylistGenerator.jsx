@@ -25,12 +25,28 @@ import Select from '@mui/material/Select';
 class PlaylistGenerator extends Component {
     constructor(props) {
         super(props);
-        this.handleOnChange = this.handleOnChange.bind(this);
+
+        // BIND CONTEXT TO ALL FUNCTIONS!!!
+        this.handleTrackOnChange = this.handleTrackOnChange.bind(this);
+        this.handleArtistOnChange = this.handleArtistOnChange.bind(this);
+        this.handleGenreOnChange = this.handleGenreOnChange.bind(this);
     }
 
-    handleOnChange(event){
+    // change the state to update track seed 
+    handleTrackOnChange(event){
         this.props.changeTrackSeed(event.target.value); 
     }
+
+    // change the state to update track seed 
+    handleArtistOnChange(event) {
+        this.props.changeArtistSeed(event.target.value);
+    }
+
+    // change the state to update genre seed 
+    handleGenreOnChange(event) {
+        this.props.changeGenreSeed(event.target.value);
+    }
+
 
     // runs every time the page reloads 
     componentDidMount() {
@@ -61,23 +77,74 @@ class PlaylistGenerator extends Component {
         let trackSeedBox = 
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <InputLabel>Select a Track</InputLabel>
                 <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Age"
-                    onChange={this.handleOnChange}
+                    id="track-select"
+                        onChange={this.handleTrackOnChange}
                 >
                     {trackMenuItems}
                 </Select>
             </FormControl>
         </Box>
-        
+
+        // dynamically create array of menu items for artist seeds
+        const artistMenuItems = [];
+        for (let i = 0; i < seeds.artists.length; i++) {
+            // create menu item
+            let menuItem = <MenuItem value={seeds.artists[i].artistID}>{seeds.artists[i].name}</MenuItem>
+            // push to array 
+            artistMenuItems.push(menuItem);
+        }
+
+        // create entire box for artistSeed
+        let artistSeedBox =
+            <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                    <InputLabel>Select an Artist</InputLabel>
+                    <Select
+                        id="artist-select"
+                        onChange={this.handleArtistOnChange}
+                    >
+                        {artistMenuItems}
+                    </Select>
+                </FormControl>
+            </Box>
+
+
+        // dynamically create array of menu items for genre seeds
+        const genreMenuItems = [];
+        for (let i = 0; i < seeds.genres.length; i++) {
+            // create menu item
+            let menuItem = <MenuItem value={seeds.genres[i]}>{seeds.genres[i]}</MenuItem>
+            // push to array 
+            genreMenuItems.push(menuItem);
+        }
+
+        // create entire box for artistSeed
+        let genreSeedBox =
+            <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                    <InputLabel>Select a Genre</InputLabel>
+                    <Select
+                        id="genre-select"
+                        onChange={this.handleGenreOnChange}
+                    >
+                        {genreMenuItems}
+                    </Select>
+                </FormControl>
+            </Box>
+
+
+
         return (
             <div className="playlist-generator">
-                <h1> I want a playlist with a...</h1>
+                <h1> I want a playlist with a</h1>
                     {trackSeedBox}
-                <h1>...type vibe</h1>
+                    <br/>
+                    {artistSeedBox}
+                    <br/> 
+                    {genreSeedBox}
+                <h1>type vibe</h1>
                 <Button variant="contained">Generate Playlist</Button>
             </div>
         );

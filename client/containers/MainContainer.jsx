@@ -35,6 +35,8 @@ class MainContainer extends Component {
         };
         // BIND CONTEXT TO ALL FUNCTIONS!!!
         this.changeTrackSeed = this.changeTrackSeed.bind(this);
+        this.changeArtistSeed = this.changeArtistSeed.bind(this); 
+        this.changeGenreSeed = this.changeGenreSeed.bind(this);
     }
 
     //  Functions to update state when new seeds are selected 
@@ -43,6 +45,20 @@ class MainContainer extends Component {
             ...this.state, 
             trackSeed: track
         }); 
+    }
+
+    changeArtistSeed(artist){
+        this.setState({
+            ...this.state,
+            artistSeed: artist
+        });
+    }
+
+    changeGenreSeed(genre){
+        this.setState({
+            ...this.state,
+            genreSeed: genre
+        });
     }
 
     // runs every time the page reloads 
@@ -101,7 +117,11 @@ class MainContainer extends Component {
         if (loggedIn) display = 
         <div>
             <UserInfo /> 
-            <PlaylistGenerator changeTrackSeed={this.changeTrackSeed}/>
+            <PlaylistGenerator 
+                changeTrackSeed={this.changeTrackSeed}
+                changeArtistSeed={this.changeArtistSeed}
+                changeGenreSeed={this.changeGenreSeed}
+            />
         </div>;
 
         return (
