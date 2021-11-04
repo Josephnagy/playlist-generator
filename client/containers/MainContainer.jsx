@@ -28,9 +28,21 @@ class MainContainer extends Component {
             user: null,
             accessCode: null, 
             accessToken: null, 
-            refreshToken: null
+            refreshToken: null, 
+            trackSeed: '', 
+            artistSeed: '', 
+            genreSeed: ''
         };
         // BIND CONTEXT TO ALL FUNCTIONS!!!
+        this.changeTrackSeed = this.changeTrackSeed.bind(this);
+    }
+
+    //  Functions to update state when new seeds are selected 
+    changeTrackSeed(track){
+        this.setState({
+            ...this.state, 
+            trackSeed: track
+        }); 
     }
 
     // runs every time the page reloads 
@@ -86,7 +98,11 @@ class MainContainer extends Component {
         //  conditionally render login page based on user state
         // if user is logged in, display the webpage 
         // -> otherwise, display login page 
-        if (loggedIn) display = <div><UserInfo /> <PlaylistGenerator /></div>;
+        if (loggedIn) display = 
+        <div>
+            <UserInfo /> 
+            <PlaylistGenerator changeTrackSeed={this.changeTrackSeed}/>
+        </div>;
 
         return (
             <div className="container">
