@@ -75,7 +75,7 @@ class PlaylistGenerator extends Component {
 
         // create entire box for trackSeed
         let trackSeedBox = 
-        <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 120, maxWidth: 500 }}>
             <FormControl fullWidth>
                 <InputLabel>Select a Track</InputLabel>
                 <Select
@@ -98,7 +98,7 @@ class PlaylistGenerator extends Component {
 
         // create entire box for artistSeed
         let artistSeedBox =
-            <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 120, maxWidth: 500 }}>
                 <FormControl fullWidth>
                     <InputLabel>Select an Artist</InputLabel>
                     <Select
@@ -122,7 +122,7 @@ class PlaylistGenerator extends Component {
 
         // create entire box for artistSeed
         let genreSeedBox =
-            <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 120, maxWidth: 500}}>
                 <FormControl fullWidth>
                     <InputLabel>Select a Genre</InputLabel>
                     <Select

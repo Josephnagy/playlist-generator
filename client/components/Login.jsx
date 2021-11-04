@@ -11,18 +11,25 @@
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+// MUI Components 
+import Button from '@mui/material/Button';
+
 
 class Login extends Component {
     constructor(props) {
         super(props);
     }
 
-    render() {
+    render() {     
         return (
             <div>
                 <div id="login">
                     <h1>This is an example of the Authorization Code flow</h1>
-                    <a href="/api/authentication/login">Log in with Spotify</a>
+
+                    <Button 
+                        variant="contained"
+                        href="/api/authentication/login"
+                    >Log in with Spotify</Button>
                 </div>
             </div>
         );

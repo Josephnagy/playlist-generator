@@ -11,6 +11,8 @@
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+// MUI Components 
+import Button from '@mui/material/Button';
 
 class UserInfo extends Component {
     constructor(props) {
@@ -22,7 +24,10 @@ class UserInfo extends Component {
             <div>
                 <div id="login">
                     <h1>Congrats you logged in! Here's your user info</h1>
-                    <a href="">Logout</a>
+                    <Button
+                        variant="contained"
+                        href=""
+                    >Log in with Spotify</Button>
                 </div>
             </div>
         );
