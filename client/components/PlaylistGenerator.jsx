@@ -65,7 +65,7 @@ class PlaylistGenerator extends Component {
 
     render() {
         // dynamically create array of menu items for track seeds 
-        const trackMenuItems = []; 
+        const trackMenuItems = [<MenuItem value=''>None</MenuItem>];
         for(let i=0; i<seeds.tracks.length; i++){
             // create menu item
             let menuItem = <MenuItem value={seeds.tracks[i].trackID}>{seeds.tracks[i].trackName}</MenuItem>
@@ -88,7 +88,7 @@ class PlaylistGenerator extends Component {
         </Box>
 
         // dynamically create array of menu items for artist seeds
-        const artistMenuItems = [];
+        const artistMenuItems = [<MenuItem value=''>None</MenuItem>];
         for (let i = 0; i < seeds.artists.length; i++) {
             // create menu item
             let menuItem = <MenuItem value={seeds.artists[i].artistID}>{seeds.artists[i].name}</MenuItem>
@@ -112,7 +112,7 @@ class PlaylistGenerator extends Component {
 
 
         // dynamically create array of menu items for genre seeds
-        const genreMenuItems = [];
+        const genreMenuItems = [<MenuItem value=''>None</MenuItem>];
         for (let i = 0; i < seeds.genres.length; i++) {
             // create menu item
             let menuItem = <MenuItem value={seeds.genres[i]}>{seeds.genres[i]}</MenuItem>
