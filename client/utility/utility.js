@@ -40,5 +40,16 @@ utils.getTokens = () => {
     return tokens; 
 }
 
+// helper function
+// input: array of spotify track objects 
+// output: object, key: 'uris', value: array of URI strings 
+utils.getTrackURIs = (tracks) => {
+    let uris = {}; 
+
+    uris.uris = tracks.map(e => e.uri); 
+
+    return uris; 
+}
+
 // EXPORT THE UTILITY HERE
 module.exports = utils;

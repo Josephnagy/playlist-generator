@@ -99,7 +99,32 @@ class MainContainer extends Component {
             body: playlistPostBody
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                // now that the playlist has been created, add tracks to it
+                // get playlist ID 
+                let playlistID = data.id;
+                console.log(data);
+
+                // setup request URL
+                let url = `https://api.spotify.com/v1/playlists/${playlistID}/tracks`;
+
+                // setup body 
+                let tracksPostBody = JSON.stringify(Utility.getTrackURIs(this.state.recs.tracks));
+
+                // post request
+                fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        "Authorization": auth
+                    },
+                    body: tracksPostBody
+                })
+                .then(response => response.json())
+                .then(response => console.log('post successful'))
+                .catch(err => console.log(err));
+
+            })
             .catch(err => console.log(err));
 
         // 
