@@ -31,12 +31,14 @@ class MainContainer extends Component {
             refreshToken: null, 
             trackSeed: '', 
             artistSeed: '', 
-            genreSeed: ''
+            genreSeed: '', 
+            recs: null
         };
         // BIND CONTEXT TO ALL FUNCTIONS!!!
         this.changeTrackSeed = this.changeTrackSeed.bind(this);
         this.changeArtistSeed = this.changeArtistSeed.bind(this); 
         this.changeGenreSeed = this.changeGenreSeed.bind(this);
+        this.generatePlaylist = this.generatePlaylist.bind(this);
     }
 
     //  Functions to update state when new seeds are selected 
@@ -60,6 +62,42 @@ class MainContainer extends Component {
             genreSeed: genre
         });
     }
+
+    generatePlaylist() {
+        console.log('GENERATING PLAYLIST');
+        // check that at leats one of the seeds was used 
+
+        // build request url 
+        let url = 'https://api.spotify.com/v1/recommendations?'; 
+        // add trackSeed 
+        url += `seed_tracks=${this.state.trackSeed}&`;
+        url += `seed_artists=${this.state.artistSeed}&`;
+        url += `seed_genres=${this.state.genreSeed}`;
+        console.log('request URL: ');
+        console.log(url); 
+
+        // fetch request 
+
+        // format access token 
+        let auth = "Bearer " + this.state.accessToken;
+        // update state inside fetch request
+        fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": auth
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    ...this.state,
+                    recs: data
+                });
+            })
+            .catch(err => console.log(err));
+    }
+
 
     // runs every time the page reloads 
     componentDidMount(){
@@ -121,6 +159,7 @@ class MainContainer extends Component {
                 changeTrackSeed={this.changeTrackSeed}
                 changeArtistSeed={this.changeArtistSeed}
                 changeGenreSeed={this.changeGenreSeed}
+                generatePlaylist={this.generatePlaylist}
             />
         </div>;
 

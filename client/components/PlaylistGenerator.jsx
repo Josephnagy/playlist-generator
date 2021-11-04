@@ -47,7 +47,6 @@ class PlaylistGenerator extends Component {
         this.props.changeGenreSeed(event.target.value);
     }
 
-
     // runs every time the page reloads 
     componentDidMount() {
         // for debugging
@@ -145,7 +144,10 @@ class PlaylistGenerator extends Component {
                     <br/> 
                     {genreSeedBox}
                 <h1>type vibe</h1>
-                <Button variant="contained">Generate Playlist</Button>
+                <Button 
+                    variant="contained"
+                    onClick={this.props.generatePlaylist}
+                >Generate Playlist</Button>
             </div>
         );
     }
